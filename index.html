@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>মানবতার আলো | অসহায় মানুষের পাশে</title>
+
+  <!-- SEO -->
+  <meta name="description" content="অসহায় মানুষের গল্প, বিজ্ঞাপন থেকে আয়, এবং সেই অর্থ দিয়ে মানবসেবা।" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="মানবতার আলো" />
+  <meta property="og:description" content="আপনার একটি ভিউ ও শেয়ারে অসহায় মানুষ পাবে সহায়তা।" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1200" />
+
+  <!-- Google AdSense: আপনার Publisher ID বসান -->
+  <!--
+  <script async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXX"
+    crossorigin="anonymous"></script>
+  -->
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+  <!-- Bangla Font -->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap');
+
+    body {
+      font-family: 'Hind Siliguri', sans-serif;
+    }
+  </style>
+  <link rel="icon" type="image/x-icon" href="Trust The Idea Logo.png">
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+  <!-- Header -->
+  <header class="bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-lg">
+    <div class="max-w-6xl mx-auto px-4 py-8">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+        <div>
+          <h1 class="text-3xl md:text-4xl font-bold flex items-center gap-3">
+            <i class="fa-solid fa-hand-holding-heart"></i>
+            মানবতার আলো
+          </h1>
+          <p class="mt-2 text-sm md:text-base opacity-90">
+            বিজ্ঞাপন ও ডোনেশনের অর্থ দিয়ে অসহায় মানুষের পাশে দাঁড়ানোর উদ্যোগ
+          </p>
+        </div>
+
+        <div class="flex gap-2 flex-wrap justify-center">
+          <button onclick="scrollToSection('stories')"
+            class="bg-white text-emerald-700 px-4 py-2 rounded-lg font-semibold">
+            গল্প পড়ুন
+          </button>
+          <button onclick="scrollToSection('submit')"
+            class="bg-yellow-400 text-slate-900 px-4 py-2 rounded-lg font-semibold">
+            গল্প পাঠান
+          </button>
+          <button onclick="openAdmin()"
+            class="bg-slate-900 text-white px-4 py-2 rounded-lg font-semibold">
+            অ্যাডমিন
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="max-w-6xl mx-auto px-4 py-10">
+    <div class="grid md:grid-cols-2 gap-8 items-center">
+      <div>
+        <span class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-xs font-bold">
+          ১০০% মানবসেবামূলক উদ্যোগ
+        </span>
+        <h2 class="text-3xl md:text-5xl font-bold mt-4 leading-tight">
+          আপনার একটি ভিউ, একটি শেয়ার,
+          <span class="text-emerald-600">একটি পরিবারের মুখে হাসি</span>
+        </h2>
+        <p class="mt-4 text-slate-600 leading-relaxed">
+          এই ওয়েবসাইটে প্রকাশিত গল্পগুলো পড়লে বিজ্ঞাপন থেকে আয় হয়। সেই আয় এবং ডোনেশন
+          ব্যবহার করা হয় চিকিৎসা, শিক্ষা, খাদ্য ও বাসস্থান সহায়তায়।
+        </p>
+
+        <div class="mt-6 flex gap-3 flex-wrap">
+          <a href="https://www.bkash.com" target="_blank"
+            class="bg-pink-600 text-white px-4 py-2 rounded-lg font-semibold">
+            বিকাশে সহায়তা
+          </a>
+          <a href="https://www.nagad.com.bd" target="_blank"
+            class="bg-orange-500 text-white px-4 py-2 rounded-lg font-semibold">
+            নগদে সহায়তা
+          </a>
+        </div>
+      </div>
+
+      <img
+        src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1200"
+        alt="মানবসেবা"
+        class="rounded-3xl shadow-xl w-full h-80 object-cover"
+      />
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="max-w-6xl mx-auto px-4 pb-8">
+    <div class="grid md:grid-cols-4 gap-4">
+      <div class="bg-white rounded-2xl p-6 shadow-sm text-center">
+        <p class="text-sm text-slate-500">মোট ভিউ</p>
+        <h3 id="totalViews" class="text-3xl font-bold text-emerald-600">০</h3>
+      </div>
+      <div class="bg-white rounded-2xl p-6 shadow-sm text-center">
+        <p class="text-sm text-slate-500">আনুমানিক আয়</p>
+        <h3 id="totalIncome" class="text-3xl font-bold text-emerald-600">$0.00</h3>
+      </div>
+      <div class="bg-white rounded-2xl p-6 shadow-sm text-center">
+        <p class="text-sm text-slate-500">সাহায্যপ্রাপ্ত পরিবার</p>
+        <h3 class="text-3xl font-bold text-emerald-600">১২</h3>
+      </div>
+      <div class="bg-white rounded-2xl p-6 shadow-sm text-center">
+        <p class="text-sm text-slate-500">প্রকাশিত গল্প</p>
+        <h3 id="storyCount" class="text-3xl font-bold text-emerald-600">০</h3>
+      </div>
+    </div>
+  </section>
+
+  <!-- AdSense Placeholder -->
+  <section class="max-w-6xl mx-auto px-4 pb-8">
+    <div class="bg-white rounded-2xl p-4 shadow-sm text-center border">
+      <p class="text-xs uppercase text-slate-400 mb-2">Google AdSense বিজ্ঞাপন</p>
+      <div class="bg-slate-100 h-24 rounded-xl flex items-center justify-center text-slate-500">
+        আপনার বিজ্ঞাপন এখানে প্রদর্শিত হবে
+      </div>
+    </div>
+  </section>
+
+  <!-- Stories -->
+  <section id="stories" class="max-w-6xl mx-auto px-4 py-8">
+    <div class="flex justify-between items-center mb-6">
+      <h2 class="text-3xl font-bold">বাস্তব গল্পসমূহ</h2>
+      <button onclick="shareWebsite()"
+        class="bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold">
+        শেয়ার করুন
+      </button>
+    </div>
+
+    <div id="storiesContainer" class="grid lg:grid-cols-2 gap-6"></div>
+  </section>
+
+  <!-- Submit Story -->
+  <section id="submit" class="max-w-3xl mx-auto px-4 py-12">
+    <div class="bg-white rounded-3xl shadow-md p-8">
+      <h2 class="text-3xl font-bold mb-2">নতুন গল্প পাঠান</h2>
+      <p class="text-slate-500 mb-6">আপনার পাঠানো গল্প অ্যাডমিন অনুমোদনের পর প্রকাশিত হবে।</p>
+
+      <form id="storyForm" class="space-y-4">
+        <input id="author" required placeholder="আপনার নাম"
+          class="w-full border rounded-lg px-4 py-3" />
+
+        <input id="title" required placeholder="গল্পের শিরোনাম"
+          class="w-full border rounded-lg px-4 py-3" />
+
+        <select id="category" class="w-full border rounded-lg px-4 py-3">
+          <option>চিকিৎসা সহায়তা</option>
+          <option>শিক্ষা তহবিল</option>
+          <option>খাদ্য ও বাসস্থান</option>
+        </select>
+
+        <input id="image" placeholder="ছবির URL"
+          class="w-full border rounded-lg px-4 py-3" />
+
+        <textarea id="content" rows="6" required
+          placeholder="বিস্তারিত লিখুন..."
+          class="w-full border rounded-lg px-4 py-3"></textarea>
+
+        <button type="submit"
+          class="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-lg font-bold">
+          গল্প জমা দিন
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Transparency Report -->
+  <section class="max-w-6xl mx-auto px-4 py-12">
+    <div class="bg-white rounded-3xl shadow-sm p-8">
+      <h2 class="text-3xl font-bold mb-4">স্বচ্ছতা রিপোর্ট</h2>
+      <ul class="space-y-2 text-slate-600">
+        <li>• মোট আয়: <strong>$125.50</strong></li>
+        <li>• চিকিৎসা সহায়তা: <strong>$80.00</strong></li>
+        <li>• শিক্ষা সহায়তা: <strong>$25.00</strong></li>
+        <li>• খাদ্য সহায়তা: <strong>$20.50</strong></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-slate-400 mt-12">
+    <div class="max-w-6xl mx-auto px-4 py-10 text-center">
+      <img src="1000021942.jpg", width="100px", height="100px" center class="mx-auto rounded-full mt-6 mb-4">
+      <h3 class="text-white text-2xl font-bold mb-2">মানবতার আলো</h3>
+      <p>অসহায় মানুষের পাশে প্রযুক্তির শক্তি</p>
+      <p class="mt-4 text-sm">© 2026 মানবতার আলো। সর্বস্বত্ব সংরক্ষিত।</p><br>
+
+      <h4>ওয়েবসাইটের প্রতিষ্ঠাতা</h4>
+      <pr>Nazib Abrar</pr><br>
+      <pr>Chapainawabganj Polytechnic Institute</pr><br>
+      <pr>Computer Science and Technology</pr>
+
+    </div>
+  </footer>
+
+  <!-- Admin Modal -->
+  <div id="adminModal"
+    class="fixed inset-0 bg-black/50 hidden items-center justify-center p-4">
+    <div class="bg-white rounded-2xl p-6 w-full max-w-sm">
+      <h3 class="text-xl font-bold mb-4">অ্যাডমিন লগইন</h3>
+      <input id="adminPassword" type="password"
+        placeholder="পাসওয়ার্ড"
+        class="w-full border rounded-lg px-4 py-3 mb-4" />
+      <div class="flex gap-2">
+        <button onclick="checkAdmin()"
+          class="flex-1 bg-emerald-600 text-white py-2 rounded-lg">
+          লগইন
+        </button>
+        <button onclick="closeAdmin()"
+          class="flex-1 bg-slate-200 py-2 rounded-lg">
+          বন্ধ
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // অ্যাডমিন পাসওয়ার্ড
+    const ADMIN_PASSWORD = 'admin786';
+
+    // ডাটাবেজ
+    let stories = JSON.parse(localStorage.getItem('humanity_stories')) || [
+      {
+        id: 1,
+        author: 'এডমিন',
+        title: 'ছোট্ট হাসিই বদলে দিতে পারে পৃথিবী। আমরা আছি সেই হাসির পাশে। 💖',
+        category: 'চিকিৎসা সহায়তা',
+
+        image: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1200',
+
+        content:"প্রতিটি শিশুর ছোট্ট একটি হাসির মাঝেই লুকিয়ে থাকে সুন্দর এক পৃথিবীর স্বপ্ন। 🌍💖 
+        আমরা আছি সেই হাসির পাশে, যেখানে অসহায় শিশুরা পায় চিকিৎসা সহায়তা, শিক্ষা ও ভালোবাসা। 🎗️📚❤️
+        আপনার একটি ভিউ, একটি শেয়ার, একটি সাহায্যের হাত বাড়িয়ে দিন সেই ছোট্ট হাসির জন্য। 🤝✨
+        আসুন, একসাথে সেই হাসিকে বাস্তবে রূপান্তর করি এবং অসহায় শিশুদের জীবনে আলো ছড়িয়ে দিই। 🌟👶💖
+        ",
+        
+        status: 'approved',
+        views: 1200,
+        date: '২০ মে ২০২৬'
+      }
+    ];
+
+    function saveStories() {
+      localStorage.setItem('humanity_stories', JSON.stringify(stories));
+    }
+
+    function scrollToSection(id) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function shareWebsite() {
+      if (navigator.share) {
+        navigator.share({
+          title: 'মানবতার আলো',
+          text: 'অসহায় মানুষের পাশে দাঁড়ানোর ওয়েবসাইট',
+          url: location.href
+        });
+      } else {
+        window.open(
+          'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(location.href),
+          '_blank'
+        );
+      }
+    }
+
+    function renderStories() {
+      const container = document.getElementById('storiesContainer');
+      const approved = stories.filter(s => s.status === 'approved');
+
+      container.innerHTML = '';
+
+      let totalViews = 0;
+
+      approved.forEach(story => {
+        story.views += Math.floor(Math.random() * 5) + 1;
+        totalViews += story.views;
+
+        container.innerHTML += `
+          <article class="bg-white rounded-3xl shadow-sm overflow-hidden">
+            ${story.image ? `<img src="${story.image}" class="w-full h-64 object-cover">` : ''}
+            <div class="p-6">
+              <span class="inline-block bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-xs font-bold mb-3">
+                ${story.category}
+              </span>
+              <h3 class="text-2xl font-bold mb-3">${story.title}</h3>
+              <p class="text-slate-600 leading-relaxed mb-4">${story.content}</p>
+              <div class="flex justify-between items-center text-sm text-slate-500">
+                <span><i class="fa-solid fa-eye"></i> ${story.views.toLocaleString('bn-BD')} ভিউ</span>
+                <span>${story.author}</span>
+              </div>
+            </div>
+          </article>
+        `;
+      });
+
+      document.getElementById('totalViews').textContent = totalViews.toLocaleString('bn-BD');
+      document.getElementById('totalIncome').textContent = '$' + (totalViews * 0.005).toFixed(2);
+      document.getElementById('storyCount').textContent = approved.length.toLocaleString('bn-BD');
+
+      saveStories();
+    }
+
+    // গল্প জমা
+    document.getElementById('storyForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      stories.push({
+        id: Date.now(),
+        author: document.getElementById('author').value,
+        title: document.getElementById('title').value,
+        category: document.getElementById('category').value,
+        image: document.getElementById('image').value,
+        content: document.getElementById('content').value,
+        status: 'pending',
+        views: 5,
+        date: new Date().toLocaleDateString('bn-BD')
+      });
+
+      saveStories();
+      alert('গল্পটি সফলভাবে জমা হয়েছে। অ্যাডমিন অনুমোদনের পর প্রকাশিত হবে।');
+      this.reset();
+    });
+
+    // অ্যাডমিন লগইন
+    function openAdmin() {
+      document.getElementById('adminModal').classList.remove('hidden');
+      document.getElementById('adminModal').classList.add('flex');
+    }
+
+    function closeAdmin() {
+      document.getElementById('adminModal').classList.add('hidden');
+      document.getElementById('adminModal').classList.remove('flex');
+    }
+
+    function checkAdmin() {
+      const password = document.getElementById('adminPassword').value;
+
+      if (password === ADMIN_PASSWORD) {
+        closeAdmin();
+
+        const pending = stories.filter(s => s.status === 'pending');
+
+        if (pending.length === 0) {
+          alert('কোনো পেন্ডিং গল্প নেই।');
+          return;
+        }
+
+        const titles = pending.map((s, i) => `${i + 1}. ${s.title}`).join('\n');
+        const choice = prompt(`পেন্ডিং গল্পসমূহ:\n\n${titles}\n\nঅনুমোদনের জন্য সিরিয়াল নম্বর লিখুন:`);
+
+        const index = parseInt(choice) - 1;
+
+        if (pending[index]) {
+          pending[index].status = 'approved';
+          saveStories();
+          renderStories();
+          alert('গল্পটি অনুমোদিত হয়েছে।');
+        }
+      } else {
+        alert('ভুল পাসওয়ার্ড।');
+      }
+    }
+
+    // শুরুতে লোড
+    renderStories();
+  </script>
+</body>
+</html>
